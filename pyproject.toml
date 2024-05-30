@@ -4,6 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["Stepan Kozlov <pewspoon.info@gmail.com>"]
 readme = "README.md"
+packages = [
+  { include = "gendiff" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -15,5 +18,5 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-hexlet-python-package = "python-project-50.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
 

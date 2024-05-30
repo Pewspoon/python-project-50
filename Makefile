@@ -19,7 +19,9 @@ build: check
 	poetry build
 
 gendiff:
-	poetry run python3 /Users/pewspoonmail.ru/python-project-50/gendiff/scripts/gendiff.py
+	poetry run python -m gendiff.scripts.gendiff
+
 
 .PHONY: install test lint selfcheck check build
+.PHONY: gendiff
 
