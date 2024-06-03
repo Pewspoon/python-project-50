@@ -18,10 +18,6 @@ check: selfcheck test lint
 build: check
 	poetry build
 
-gendiff:
-	poetry run python -m gendiff.scripts.gendiff
-
 
 .PHONY: install test lint selfcheck check build
-.PHONY: gendiff
 

@@ -1,14 +1,15 @@
 import argparse
 import json
-from gendiff.scripts import file1
+first_file = '/Users/pewspoonmail.ru/python-project-50/gendiff/scripts/file1.json'
+second_file = '/Users/pewspoonmail.ru/python-project-50/gendiff/scripts/file2.json'
 
 
 def generate_diff(first_file, second_file):
-    json.load(open(f'path/to/{first_file}'))
-    json.load(open(f'path/to/{second_file}'))
-    result = {}
-    items = (result[x] for x in second_file.items() if x in first_file and second_file)
-    return '{\n' + '\n'.join(items) + '\n}'
+    first_file = json.load(open(first_file))
+    second_file = json.load(open(second_file))
+    items: str
+    for key, value in {**first_file, **second_file}.items():
+        print(key, '-', value)
 
 
 def main():
