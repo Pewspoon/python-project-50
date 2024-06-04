@@ -4,8 +4,8 @@ from itertools import chain
 
 
 def generate_diff(first_file, second_file):
-    first_file = json.load(open('/Users/pewspoonmail.ru/python-project-50/gendiff/scripts/file1.json'))
-    second_file = json.load(open('/Users/pewspoonmail.ru/python-project-50/gendiff/scripts/file2.json'))
+    first_file = json.load(open('/tests/fixtures/file1.json'))
+    second_file = json.load(open('/tests/fixtures/file2.json'))
     result = dict(chain(first_file.items(), second_file.items()))
     res = check_type(result)
     string = []
@@ -27,14 +27,14 @@ def generate_diff(first_file, second_file):
 def check_type(item):
     dict_with_low_values = {}
     for key, value in item.items():
-        if isinstance(value, bool):
+        if not isinstance(value, str):
             new_value = str(value).lower()
             dict_with_low_values[key] = new_value
-        elif not isinstance(value, str):
-            new_value = str(value)
+        elif isinstance(value, bool):
+            new_value = str(value).lower()
             dict_with_low_values[key] = new_value
         else:
-            new_value = value.lower()
+            new_value = str(value).lower()
             dict_with_low_values[key] = new_value
     new_sorted_dict = dict(sorted(dict_with_low_values.items(), key=lambda x: x[0]))
     return new_sorted_dict
