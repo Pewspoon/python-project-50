@@ -8,7 +8,6 @@ def generate_diff(first_file, second_file):
     second_file = json.load(open('/Users/pewspoonmail.ru/python-project-50/gendiff/scripts/file2.json'))
     result = dict(chain(first_file.items(), second_file.items()))
     res = check_type(result)
-    print(res)
     string = []
     for key, value in res.items():
         if key in first_file and key in second_file:
@@ -26,14 +25,19 @@ def generate_diff(first_file, second_file):
 
 
 def check_type(item):
-    new_dict_with_low_values = {}
+    dict_with_low_values = {}
     for key, value in item.items():
-        if type(key) != type(value):
+        if isinstance(value, bool):
             new_value = str(value).lower()
-            new_dict_with_low_values[key] = new_value
+            dict_with_low_values[key] = new_value
+        elif not isinstance(value, str):
+            new_value = str(value)
+            dict_with_low_values[key] = new_value
         else:
-            new_dict_with_low_values[key] = value
-    return new_dict_with_low_values
+            new_value = value.lower()
+            dict_with_low_values[key] = new_value
+    new_sorted_dict = dict(sorted(dict_with_low_values.items(), key=lambda x: x[0]))
+    return new_sorted_dict
 
 
 def main():
