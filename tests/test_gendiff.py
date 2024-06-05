@@ -4,7 +4,7 @@ import os
 
 
 def get_fixtures_data(file_name):
-    path_to_file = os.path.join('fixtures', file_name)
+    path_to_file = os.path.join('tests/fixtures', file_name)
     with open(path_to_file, 'r') as f:
         return f.read()
 
