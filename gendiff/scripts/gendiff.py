@@ -8,20 +8,22 @@ def generate_diff(first_file, second_file):
     second_file = json.load(open('tests/fixtures/file2.json'))
     result = dict(chain(first_file.items(), second_file.items()))
     res = check_type(result)
-    string = []
-    for key, value in res.items():
-        if key in first_file and key in second_file:
-            if first_file[key] == second_file[key]:
-                string.append(f'  {key}: {value}\n')
-            else:
-                string.append('- ' + f'{key}: {first_file[key]}\n')
-                string.append('+ ' + f'{key}: {second_file[key]}\n')
-        elif key in first_file:
-            string.append(f'- {key}: {first_file[key]}\n')
-        elif key in second_file:
-            string.append(f'+ {key}: {second_file[key]}\n')
-    string = ''.join(string)
-    print(string)
+    print(res)
+    # res = check_type(result)
+    # string = []
+    # for key, value in res.items():
+    #     if key in first_file and key in second_file:
+    #         if first_file[key] == second_file[key]:
+    #             string.append(f'  {key}: {value}\n')
+    #         else:
+    #             string.append('- ' + f'{key}: {first_file[key]}\n')
+    #             string.append('+ ' + f'{key}: {second_file[key]}\n')
+    #     elif key in first_file:
+    #         string.append(f'- {key}: {first_file[key]}\n')
+    #     elif key in second_file:
+    #         string.append(f'+ {key}: {second_file[key]}\n')
+    # string = ''.join(string)
+    # print(string)
 
 
 def check_type(item):
