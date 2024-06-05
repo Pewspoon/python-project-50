@@ -4,8 +4,8 @@ from itertools import chain
 
 
 def generate_diff(first_file, second_file):
-    first_file = json.load(open('/tests/fixtures/file1.json'))
-    second_file = json.load(open('/tests/fixtures/file2.json'))
+    first_file = json.load(open('tests/fixtures/file1.json'))
+    second_file = json.load(open('tests/fixtures/file2.json'))
     result = dict(chain(first_file.items(), second_file.items()))
     res = check_type(result)
     string = []
